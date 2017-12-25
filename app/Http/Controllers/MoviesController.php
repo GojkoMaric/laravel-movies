@@ -19,13 +19,25 @@ class MoviesController extends Controller
         return view('movies.show', compact('movie'));
     }
 
-    public function add()
+    public function add(){
+        return view('movies.create');
+    }
+
+    public function store()
     {
+        $this->validate(request(), ['title'=>'required', 
+        'director'=>'required',
+        'year'=>'required',
+        'storyline'=>'required | max:1000',
+        ]);
+
         Movie::create([
             'title'=>request('title'),
             'director'=>request('director'),
             'year'=>request('year'),
             'storyline'=>request('storyline')
         ]);
+
+        return redirect()->route('all-movies');
     }
 }
