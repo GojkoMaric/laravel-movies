@@ -18,4 +18,14 @@ class MoviesController extends Controller
         $movie = Movie::find($id);
         return view('movies.show', compact('movie'));
     }
+
+    public function add()
+    {
+        Movie::create([
+            'title'=>request('title'),
+            'director'=>request('director'),
+            'year'=>request('year'),
+            'storyline'=>request('storyline')
+        ]);
+    }
 }
