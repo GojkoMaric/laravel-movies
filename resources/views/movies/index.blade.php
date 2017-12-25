@@ -7,7 +7,7 @@
 
 <h1>All movies</h1>
 @foreach($movies as $movie)
-    <h2>{{$movie->title}}</h2>
+    <h2><a href="{{route('single-movie', ['id'=>$movie->id])}}">{{$movie->title}}</a></h2>
     <h4>{{$movie->storyline}}</h4>
 @endforeach
 
